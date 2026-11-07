@@ -18,7 +18,24 @@
   <div id="app"><div class="boot"><div class="boot-logo">⌂</div><strong>Mahalle Platformu</strong><span>Mahallenizle bağlantıda kalın.</span></div></div>
   <noscript>Mahalle Platformu için JavaScript etkin olmalıdır.</noscript>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.48.1/dist/umd/supabase.min.js"></script>
-  <script src="./config.js"></script>
-  <script src="./app.js" defer></script>
+  <!-- Yeni sürüm: Supabase ayarlarını önbellekten bağımsız yükle -->
+  <script src="./config.js?v=20261107-fix2"></script>
+  <script>
+    // Supabase JS kendisi /rest/v1 ekler. Kullanıcı bu eki yanlışlıkla
+    // config.js'ye yapıştırdıysa adresi proje köküne normalleştir.
+    (function () {
+      var c = window.MAHALLE_CONFIG;
+      if (!c || !c.SUPABASE_URL) return;
+      try {
+        var url = new URL(String(c.SUPABASE_URL).trim());
+        if (!/^https?:$/.test(url.protocol)) throw new Error('Geçersiz protokol');
+        c.SUPABASE_URL = url.origin;
+      } catch (err) {
+        console.error('Supabase Project URL geçersiz. Ayarları kontrol edin.');
+        c.SUPABASE_URL = '';
+      }
+    }());
+  </script>
+  <script src="./app.js?v=20261107-fix2" defer></script>
 </body>
 </html>
