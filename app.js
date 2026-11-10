@@ -1,6 +1,6 @@
 /* Mahalle Platformu — statik PWA + isteğe bağlı Supabase altyapısı */
 (()=>{'use strict';
-const BUILD_LABEL='10.11.2026 · V4';
+const BUILD_LABEL='10.11.2026 · V5 (GitHub muhtar)';
 const CFG=window.MAHALLE_CONFIG||{};
 const LIVE=Boolean(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY&&window.supabase);
 const db=LIVE?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
@@ -66,6 +66,44 @@ for(const x of officialSeydikemerEntries){
  // Büyükşehir Belediyesi listesinde Ceylan mahallesi Yayla Ceylan adıyla geçebiliyor.
  if(x.neighborhood==='Ceylan')officialMuhtarMap.set(nKey('Muğla','Seydikemer','yayla ceylan'),item);
 }
+// V5: Muhtar verisi GitHub Pages'teki ayrı muhtarlar.json dosyasından yüklenir.
+// Yeni muhtar eklemek için sadece JSON dosyasını düzenlemek yeterlidir.
+const MUHTAR_DATA_VERSION='20261110-v5';
+const githubMuhtarMap=new Map();
+let githubMuhtarStatus='bekleniyor';
+let githubMuhtarRecordCount=0;
+let githubMuhtarLoadPromise=null;
+async function loadGithubMuhtarlar(){
+ if(githubMuhtarLoadPromise)return githubMuhtarLoadPromise;
+ githubMuhtarStatus='yükleniyor';
+ githubMuhtarLoadPromise=(async()=>{
+  const response=await fetch('./muhtarlar.json?v='+MUHTAR_DATA_VERSION,{cache:'no-store'});
+  if(!response.ok)throw new Error('GitHub JSON HTTP '+response.status);
+  const payload=await response.json();
+  if(!payload||!Array.isArray(payload.kayitlar)||payload.kayitlar.length<100)throw new Error('Muhtar veri dosyası eksik veya geçersiz');
+  githubMuhtarMap.clear();
+  for(const rec of payload.kayitlar){
+   if(!rec.il||!rec.ilce||!rec.mahalle||!rec.muhtar)continue;
+   const obj={muhtar_name:rec.muhtar,muhtar_phone:rec.telefon||null,muhtar_source:rec.kaynak||'Resmî belediye listesi',muhtar_source_url:rec.kaynak_url||null,muhtar_verified_at:rec.kaynak_kontrol||null};
+   githubMuhtarMap.set(nKey(rec.il,rec.ilce,locationSlug(rec.mahalle)),obj);
+   // Seydikemer'de Ceylan, bazı kaynaklarda Yayla Ceylan adıyla yer alıyor.
+   if(locationSlug(rec.ilce)==='seydikemer'&&locationSlug(rec.mahalle)==='ceylan'){
+    githubMuhtarMap.set(nKey(rec.il,rec.ilce,'yayla ceylan'),obj);
+   }
+  }
+  if(githubMuhtarMap.size<100)throw new Error('Mahalle eşleştirmesi eksik');
+  githubMuhtarRecordCount=payload.kayitlar.length;
+  githubMuhtarStatus='hazır';
+  return true;
+ })().catch(e=>{
+  githubMuhtarStatus='hata';
+  githubMuhtarLoadPromise=null; // Kullanıcı sayfayı tekrar açınca yeniden denensin.
+  console.warn('GitHub muhtar verisi yüklenemedi:',e.message);
+  return false;
+ });
+ return githubMuhtarLoadPromise;
+}
+
 const automaticPopulationCache=new Map();
 const automaticDistrictCache=new Map();
 
@@ -111,15 +149,15 @@ async function fetchAutoPopulation(loc){
 }
 const visibleNeighborhoodProfile=(loc)=>{
  const main=state.neighborhoodProfile||{};
- const imported=officialMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||officialMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||{};
+ const imported=githubMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||githubMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||officialMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||officialMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||{};
  const extra=state.autoNeighborhoodPopulation||{};
  return {...imported,...extra,...main,
  description:main.description||autoIntroduction(loc),
- muhtar_name:main.muhtar_name||imported.muhtar_name||null,
- muhtar_phone:main.muhtar_phone||imported.muhtar_phone||null,
- muhtar_source:main.muhtar_source||imported.muhtar_source||null,
- muhtar_source_url:main.muhtar_source_url||imported.muhtar_source_url||null,
- muhtar_verified_at:main.muhtar_verified_at||imported.muhtar_verified_at||null,
+ muhtar_name:imported.muhtar_name||main.muhtar_name||null,
+ muhtar_phone:imported.muhtar_phone||main.muhtar_phone||null,
+ muhtar_source:imported.muhtar_source||main.muhtar_source||null,
+ muhtar_source_url:imported.muhtar_source_url||main.muhtar_source_url||null,
+ muhtar_verified_at:imported.muhtar_verified_at||main.muhtar_verified_at||null,
  population:main.population??extra.population??null,
  population_year:main.population!=null?main.population_year:(extra.population_year||null),
  population_source:main.population!=null?main.population_source:(extra.population_source||null),
@@ -199,9 +237,9 @@ function neighborhoodPage(){
  const sourceLink=p.muhtar_source_url?`<a href="${attr(p.muhtar_source_url)}" target="_blank" rel="noopener noreferrer">Resmî kaynak</a>`:'';
  return `<section class="panel full-panel np-profile">${cover}<div class="profile-card">${icon('house','xl')}<div><h3>${esc(l.neighborhood)}</h3><p>${esc(l.district)} / ${esc(l.province)}</p></div></div>
  <div class="stat-list"><span class="stat-chip">${icon('users','sm')} Nüfus: ${esc(pop)}${p.population_year?' ('+esc(p.population_year)+')':''}</span><span class="stat-chip">${icon('calendar','sm')} ${currentPosts('event').length} etkinlik</span><span class="stat-chip">${icon('image','sm')} ${photos.length} fotoğraf</span></div>${popFoot}
- <h3>Mahalle Muhtarı</h3><div class="np-muhtar"><strong>${esc(muhtarName)}</strong>${p.muhtar_phone?`<a class="btn" href="tel:${attr(p.muhtar_phone.replace(/[^+0-9]/g,''))}">${icon('phone','sm')} ${esc(p.muhtar_phone)}</a>`:'<span class="muted small">Yayımlanmış muhtarlık telefonu bulunamadı.</span>'}${p.muhtar_source?`<small class="muted">Kaynak: ${esc(p.muhtar_source)} ${sourceLink}</small>`:''}${p.muhtar_verified_at?`<small class="muted">Kaynak kontrol tarihi: ${esc(String(p.muhtar_verified_at).slice(0,10))}</small>`:''}${!p.muhtar_name?'<small class="muted">Türkiye genelinde doğrulanmış tek bir açık muhtar listesi bulunmadığı için tahmini ad gösterilmez.</small>':''}</div>
+ <h3>Mahalle Muhtarı</h3><div class="np-muhtar"><strong>${esc(muhtarName)}</strong>${p.muhtar_phone?`<a class="btn" href="tel:${attr(p.muhtar_phone.replace(/[^+0-9]/g,''))}">${icon('phone','sm')} ${esc(p.muhtar_phone)}</a>`:'<span class="muted small">Yayımlanmış muhtarlık telefonu bulunamadı.</span>'}${p.muhtar_source?`<small class="muted">Kaynak: ${esc(p.muhtar_source)} ${sourceLink}</small>`:''}${p.muhtar_verified_at?`<small class="muted">Kaynak kontrol tarihi: ${esc(String(p.muhtar_verified_at).slice(0,10))}</small>`:''}${!p.muhtar_name?`<small class="muted">${githubMuhtarStatus==='hata'?'GitHub muhtarlar.json dosyası okunamadı. Dosya konumunu kontrol edin.':githubMuhtarStatus==='yükleniyor'?'Muhtar bilgileri yükleniyor…':'Bu mahalle için doğrulanmış muhtar kaydı henüz yok.'}</small>`:''}</div>
  <h3>Mahalle Hakkında</h3><p>${esc(p.description)}</p>${p.automatic_intro?'<div class="np-tag">İl / ilçe / mahalle kaydından otomatik oluşturulan temel tanıtım</div>':''}${p.history?`<h3>Tarihçe</h3><p>${esc(p.history)}</p>`:''}${p.landmarks?`<h3>Önemli Yerler</h3><p>${esc(p.landmarks)}</p>`:''}
- <div class="notice-box">Tanıtım ve muhtar bilgileri kullanıcılar tarafından değiştirilemez. Fotoğraf galerisi mahalle kullanıcılarının paylaşımlarını içerir. Bilgilerin kaynak yılı ve doğrulama durumu ayrıca belirtilir.</div><p class="muted small" style="margin:12px 0 2px">Uygulama sürümü: ${esc(BUILD_LABEL)}</p>
+ <div class="notice-box">Muhtar veri kaynağı: ${githubMuhtarStatus==='hazır'?'GitHub / muhtarlar.json ('+githubMuhtarMap.size+' kayıt)':githubMuhtarStatus==='hata'?'GitHub dosyası açılamadı; yedek kayıtlar kullanılabilir.':'GitHub muhtar listesi yükleniyor…'}<br>Tanıtım ve muhtar bilgileri kullanıcılar tarafından değiştirilemez. Fotoğraf galerisi mahalle kullanıcılarının paylaşımlarını içerir. Bilgilerin kaynak yılı ve doğrulama durumu ayrıca belirtilir.</div><p class="muted small" style="margin:12px 0 2px">Uygulama sürümü: ${esc(BUILD_LABEL)}</p>
  <div class="form-actions"><button class="btn btn-primary" data-follow-toggle="${attr(community())}">${icon('bookmark','sm')} ${state.following.includes(community())?'Takipten Çık':'Bu Mahalleyi Takip Et'}</button><button class="btn" data-location-open="1">${icon('pin','sm')} Mahalle Değiştir</button></div></section>
  <section class="panel full-panel" style="margin-top:13px"><div class="panel-head"><h2>${icon('image')} Mahalle Fotoğrafları</h2><button data-nav="photos">Tümünü Gör ${icon('chevron','sm')}</button></div><div class="panel-body">${photos.length?`<div class="np-gallery">${photos.slice(0,12).map(x=>`<button type="button" data-post="${attr(x.id)}" aria-label="${attr(x.title)}"><img src="${attr(x.image_url)}" alt="${attr(x.title)}" loading="lazy"></button>`).join('')}</div>`:empty('Bu mahalleye henüz fotoğraf eklenmedi.')}<div class="form-actions"><button class="btn btn-primary" data-create="photo">${icon('plus','sm')} Mahalle Fotoğrafı Ekle</button></div></div></section>`;
 }
@@ -211,6 +249,7 @@ async function loadNeighborhoodProfile(){
  state.neighborhoodLoading=true;
  if(state.view==='neighborhood')render();
  const tasks=[];
+ tasks.push((async()=>{await loadGithubMuhtarlar();if(key===community()&&state.view==='neighborhood')render()})());
  if(LIVE){tasks.push((async()=>{try{
  const {data,error}=await db.from('neighborhood_profiles').select('community_key,description,history,landmarks,population,population_year,population_source,cover_url,muhtar_name,muhtar_phone,muhtar_source,muhtar_verified_at').eq('community_key',key).maybeSingle();
  if(error)throw error;if(key===community()){state.neighborhoodProfile=data;if(state.view==='neighborhood')render()}

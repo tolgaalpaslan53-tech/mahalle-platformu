@@ -1,0 +1,1158 @@
+{
+  "format": "mahalle-platformu-muhtar-v1",
+  "aciklama": "Yalnızca kamuya açık, resmî yerel yönetim kaynaklarından derlenmiş muhtar iletişim bilgileri. Liste ülke genelini kapsamaz.",
+  "son_kontrol": "2026-11-10",
+  "kayit_sayisi": 115,
+  "kayitlar": [
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Akgedik",
+      "muhtar": "Aysel AVCI",
+      "telefon": "0538 322 4715",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Akyol",
+      "muhtar": "İsmail TOPAL",
+      "telefon": "0542 431 1440",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Atatürk",
+      "muhtar": "Mehmet KÜÇÜK",
+      "telefon": "0543 978 3450",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Alaşar",
+      "muhtar": "İskender TAŞ",
+      "telefon": "0536 470 1832",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Bağyaka",
+      "muhtar": "Hüseyin ŞAHBAZ",
+      "telefon": "0537 296 9990",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Bahçeyaka",
+      "muhtar": "Kamil KAPTAN",
+      "telefon": "0532 544 3518",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Bencik",
+      "muhtar": "Dursel GÜREN",
+      "telefon": "0545 420 5500",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Bozarmut",
+      "muhtar": "Ümit BOSTAN",
+      "telefon": "0536 980 3514",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Bozüyük",
+      "muhtar": "Ahmet YANMADIK",
+      "telefon": "0543 632 4588",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Cazkırlar",
+      "muhtar": "Mehmet DOKUNAN",
+      "telefon": "0538 605 2076",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Çakırlar",
+      "muhtar": "Serkan OTURAK",
+      "telefon": "0537 697 0629",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Çamlıca",
+      "muhtar": "Günal DİKEN",
+      "telefon": "0537 527 4126",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Cumhuriyet",
+      "muhtar": "Mehmet ÖZBEK",
+      "telefon": "0543 491 7283",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Çukuröz",
+      "muhtar": "İzzet BÜLBÜL",
+      "telefon": "0534 847 8301",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Dere",
+      "muhtar": "Zafer ÇINAR",
+      "telefon": "0505 619 1440",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Deştin",
+      "muhtar": "Nail KARAMAN",
+      "telefon": "0535 513 6327",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Doğanköy",
+      "muhtar": "Durmuş GÖK",
+      "telefon": "0536 203 3008",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Elmacık",
+      "muhtar": "Erkan GEREN",
+      "telefon": "0537 203 7547",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Esenköy",
+      "muhtar": "Muhsin TATAR",
+      "telefon": "0537 882 5311",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Eskihisar",
+      "muhtar": "Cafer ATEŞ",
+      "telefon": "0537 860 1991",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Gökgedik",
+      "muhtar": "Erdoğan KOCABIYIK",
+      "telefon": "0537 719 8510",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Gökpınar",
+      "muhtar": "Kudret UÇAR",
+      "telefon": "0537 719 8513",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Hacıbayramlar",
+      "muhtar": "İlhan GENEK",
+      "telefon": "0545 457 3885",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Hacıveliler",
+      "muhtar": "Ender ÇELİK",
+      "telefon": "0542 527 4995",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Hisarardı",
+      "muhtar": "İbrahim TURAL",
+      "telefon": "0542 693 1918",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kadıköy",
+      "muhtar": "Ertan UYSAL",
+      "telefon": "0536 414 0502",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kafacakaplancık",
+      "muhtar": "Adem KAHRAMAN",
+      "telefon": "0535 224 0946",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kapubağ",
+      "muhtar": "Nedim YÖRÜK",
+      "telefon": "0532 541 3915",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Katrancı",
+      "muhtar": "Mehmet ÖZTEMİZ",
+      "telefon": "0542 205 0607",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kavak",
+      "muhtar": "İsmail KÜÇÜK",
+      "telefon": "0532 132 7355",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kırıkköy",
+      "muhtar": "Saim SOLMAZ",
+      "telefon": "0537 852 1376",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Konak",
+      "muhtar": "Gülgün ARSLAN",
+      "telefon": "0554 949 2813",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Kozağaç",
+      "muhtar": "Taner KURT",
+      "telefon": "0538 464 1192",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Köklük",
+      "muhtar": "Beytullah KÖKLÜ",
+      "telefon": "0533 662 5941",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Madenler",
+      "muhtar": "Necati ALAN",
+      "telefon": "0542 625 7427",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Mesken",
+      "muhtar": "Şenol ÖZDEMİR",
+      "telefon": "0534 611 3929",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Nebiköy",
+      "muhtar": "Murat Ali KARATAŞ",
+      "telefon": "0536 469 9411",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Şahinler",
+      "muhtar": "İsmet GÖKTAŞ",
+      "telefon": "0532 223 9178",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Şeref",
+      "muhtar": "Hakan KİBAR",
+      "telefon": "0536 211 6112",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Turgut",
+      "muhtar": "Selim BAHÇELİ",
+      "telefon": "0535 387 5139",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Turgutlar",
+      "muhtar": "Mehmet AKKAYA",
+      "telefon": "0535 071 6827",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yava",
+      "muhtar": "Şenol ERSOY",
+      "telefon": "0532 692 4190",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yayla",
+      "muhtar": "Mustafa Kemal YATAK",
+      "telefon": "0544 770 64 13",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yeni",
+      "muhtar": "Sezai TİLKİOĞLU",
+      "telefon": "0535 868 0823",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yenikarakuyu",
+      "muhtar": "Yücel BAHÇE",
+      "telefon": "0537 659 5215",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yeniköy",
+      "muhtar": "Fidan GÖRELİ",
+      "telefon": "0535 290 5476",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yeşilbağcılar",
+      "muhtar": "Kahraman KARAOĞLAN",
+      "telefon": "0538 274 0511",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yeşilköy",
+      "muhtar": "Remzi ÇAY",
+      "telefon": "0542 592 1617",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Yukarıyayla",
+      "muhtar": "Ferdi DEVECİ",
+      "telefon": "0543 416 7497",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Yatağan",
+      "mahalle": "Zeytinköy",
+      "muhtar": "Yalçın BİLGİN",
+      "telefon": "0537 360 0496",
+      "kaynak": "Muğla Büyükşehir Belediyesi – Yatağan muhtarları",
+      "kaynak_url": "https://mugla.bel.tr/sayfa/yatagan3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Alaçat",
+      "muhtar": "Zekeriya KOCAKAYA",
+      "telefon": "05335261488",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Arifler",
+      "muhtar": "Mehmet FİNİKE",
+      "telefon": "05353217727",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Arsa",
+      "muhtar": "Cüneyt UÇAR",
+      "telefon": "05301227181",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Atlıdere",
+      "muhtar": "Yusuf GÖNEN",
+      "telefon": "05462139139",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Bağlıağaç",
+      "muhtar": "İsa SAÇLI",
+      "telefon": "05346819884",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Bayır",
+      "muhtar": "İlyas KIZILKAYA",
+      "telefon": "05352211547",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Bekçiler",
+      "muhtar": "Bayram UYSAL",
+      "telefon": "05308805142",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Belen",
+      "muhtar": "Harun KARAMANLI",
+      "telefon": "05414764848",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Boğalar",
+      "muhtar": "Halil AYDIN",
+      "telefon": "05367763244",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Boğaziçi",
+      "muhtar": "Yusuf YÜREĞİL",
+      "telefon": "05336006535",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Ceylan",
+      "muhtar": "Mehmet DURAN",
+      "telefon": "05362759531",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Cumhuriyet",
+      "muhtar": "Kadir ALAGÖZ",
+      "telefon": "05355523626",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çaltılar",
+      "muhtar": "Nural KAYA",
+      "telefon": "05366915455",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çaltıözü",
+      "muhtar": "Zafer BİLGİÇ",
+      "telefon": "05352300226",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çamurköy",
+      "muhtar": "Alim YANATMA",
+      "telefon": "05050564848",
+      "kaynak": "Muğla Büyükşehir Belediyesi / Seydikemer muhtar listesi",
+      "kaynak_url": "https://www.mugla.bel.tr/sayfa/seydikemer2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çatak",
+      "muhtar": "Mustafa KEŞ",
+      "telefon": "05050454626",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çayan",
+      "muhtar": "Tezcan ARICAN",
+      "telefon": "05325531413",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çaykenarı",
+      "muhtar": "Çetin YILDIZ",
+      "telefon": "05334869795",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çobanisa",
+      "muhtar": "Kerim ÖZER",
+      "telefon": "05313005348",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çobanlar",
+      "muhtar": "Bayram AKGÜÇ",
+      "telefon": "05367292286",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çökek",
+      "muhtar": "Süleyman Fahri BİLDİRİCİ",
+      "telefon": "05363330632",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Çukurincir",
+      "muhtar": "Serkan YILMAZ",
+      "telefon": "05337441308",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Demirler",
+      "muhtar": "Murat DEMİR",
+      "telefon": "05324466236",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Dere",
+      "muhtar": "Birol KOYUNCU",
+      "telefon": "05368782838",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Dodurga",
+      "muhtar": "Rasıh METE",
+      "telefon": "05368144882",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Doğanlar",
+      "muhtar": "Mesut DUMAN",
+      "telefon": "05373968860",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Dont",
+      "muhtar": "Ramazan İLİK",
+      "telefon": "05352871868",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Döğer",
+      "muhtar": "Hüseyin TOPAL",
+      "telefon": "05374155663",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Eşen",
+      "muhtar": "Hayri BULUT",
+      "telefon": "05323400899",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Gerişburnu",
+      "muhtar": "Tahir BÜYÜKKOCA",
+      "telefon": "05352169248",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Girmeler",
+      "muhtar": "Mehmet ÖKSÜZ",
+      "telefon": "05314306602",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Gölbent",
+      "muhtar": "Salih AVUKAT",
+      "telefon": "05358878451",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Güneşli",
+      "muhtar": "Ali GÜMÜŞ",
+      "telefon": "05394004949",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Hacıosmanlar",
+      "muhtar": "Zafer ARICAN",
+      "telefon": "05392701890",
+      "kaynak": "Muğla Büyükşehir Belediyesi / Seydikemer muhtar listesi",
+      "kaynak_url": "https://www.mugla.bel.tr/sayfa/seydikemer2",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "İzzettin",
+      "muhtar": "Mehmet CEYLAN",
+      "telefon": "05365128760",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kabaağaç",
+      "muhtar": "Durmuş CESUR",
+      "telefon": "05325423578",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=3",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kadıköy",
+      "muhtar": "Ali GÖKSU",
+      "telefon": "05376243496",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Karadere",
+      "muhtar": "Mustafa ÖZDEMİR",
+      "telefon": "05325774699",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Karaköy",
+      "muhtar": "Mehmet Ali BENLİ",
+      "telefon": "05376583790",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kayabaşı",
+      "muhtar": "Bahri DEMİRCİOĞLU",
+      "telefon": "05363731459",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kayacık",
+      "muhtar": "Ramazan APAYDIN",
+      "telefon": "05355106192",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kayadibi",
+      "muhtar": "Nuh ÖZDEMİR",
+      "telefon": "05364245719",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kıncılar",
+      "muhtar": "Mustafa ÖZCAN",
+      "telefon": "05326919958",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kınık",
+      "muhtar": "Ramazan BEDEL",
+      "telefon": "05366485726",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Korubükü",
+      "muhtar": "Hakkı KILIÇ",
+      "telefon": "05365452843",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Kumluova",
+      "muhtar": "Hilmi DENİZ",
+      "telefon": "05339498595",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Menekşe",
+      "muhtar": "Fatih KÖYMEN",
+      "telefon": "05369818691",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Minare",
+      "muhtar": "Şahsene GÜNDÜZ",
+      "telefon": "05354422235",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=4",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Ortaköy",
+      "muhtar": "Ramazan DEMİREL",
+      "telefon": "05321516262",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Ören",
+      "muhtar": "Şahin EKİNCİ",
+      "telefon": "05334324072",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Paşalı",
+      "muhtar": "Salih ÖZKAN",
+      "telefon": "05396548848",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Sahil Ceylan",
+      "muhtar": "Bekir GEDİK",
+      "telefon": "05364476366",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Sarıyer",
+      "muhtar": "Muhammet KABASAKAL",
+      "telefon": "05327271167",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Seki",
+      "muhtar": "Nejdat ÖZDEMİR",
+      "telefon": "05373388837",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Seydiler",
+      "muhtar": "Mehmet GÜVEN",
+      "telefon": "05324707152",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Söğütlüdere",
+      "muhtar": "Yasin KONUKÇU",
+      "telefon": "05362481839",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Temel",
+      "muhtar": "Hasan TOPAL",
+      "telefon": "05318729424",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Uğurlu",
+      "muhtar": "Osman TURGUT",
+      "telefon": "05336162607",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yaka",
+      "muhtar": "Mehmet GÜZEL",
+      "telefon": "05365864912",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yakabağ",
+      "muhtar": "Savaş PARÇA",
+      "telefon": "05358988510",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=5",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yayla Eldirek",
+      "muhtar": "Ali ACER",
+      "telefon": "05336416467",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=6",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yayla Karaçulha",
+      "muhtar": "Mustafa KAŞIKÇI",
+      "telefon": "05333561132",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=6",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yayla Patlangıç",
+      "muhtar": "Salih KABİK",
+      "telefon": "05454125852",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=6",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Zorlar",
+      "muhtar": "Süleyman KARAŞAL",
+      "telefon": "05334397374",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=6",
+      "kaynak_kontrol": "2026-11-10"
+    },
+    {
+      "il": "Muğla",
+      "ilce": "Seydikemer",
+      "mahalle": "Yayla Gökben",
+      "muhtar": "Alper BÜYÜMEZ",
+      "telefon": "05367010607",
+      "kaynak": "Seydikemer Belediyesi / Muhtarlarımız",
+      "kaynak_url": "https://www.seydikemer.bel.tr/AnaSayfa/Muhtarlarimiz?page=6",
+      "kaynak_kontrol": "2026-11-10"
+    }
+  ]
+}
