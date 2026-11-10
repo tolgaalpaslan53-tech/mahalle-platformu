@@ -1,0 +1,326 @@
+{
+  "surum": "v7",
+  "il": "Muğla",
+  "ilce": "Seydikemer",
+  "aciklama": "65 mahalle kaydı. Yalnızca konumu ve lisansı kontrol edilmiş Wikimedia Commons fotoğrafları gösterilir. Görsel dosyaları Commons üzerinde barındırılır; bu JSON GitHub Pages içindir.",
+  "mahalle_sayisi": 65,
+  "fotografli_mahalle_sayisi": 7,
+  "mahalleler": [
+    {
+      "mahalle": "Alaçat",
+      "foto": null
+    },
+    {
+      "mahalle": "Arifler",
+      "foto": null
+    },
+    {
+      "mahalle": "Arsa",
+      "foto": null
+    },
+    {
+      "mahalle": "Atlıdere",
+      "foto": null
+    },
+    {
+      "mahalle": "Bağlıağaç",
+      "foto": null
+    },
+    {
+      "mahalle": "Bayır",
+      "foto": null
+    },
+    {
+      "mahalle": "Bekçiler",
+      "foto": null
+    },
+    {
+      "mahalle": "Belen",
+      "foto": null
+    },
+    {
+      "mahalle": "Boğalar",
+      "foto": null
+    },
+    {
+      "mahalle": "Boğaziçi",
+      "foto": null
+    },
+    {
+      "mahalle": "Ceylan",
+      "foto": null
+    },
+    {
+      "mahalle": "Cumhuriyet",
+      "foto": null
+    },
+    {
+      "mahalle": "Çaltılar",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/48860_%C3%87alt%C4%B1lar-Fethiye-Mu%C4%9Fla%2C_Turkey_-_panoramio.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:48860_%C3%87alt%C4%B1lar-Fethiye-Mu%C4%9Fla%2C_Turkey_-_panoramio.jpg",
+        "yazar": "veli gümüş",
+        "lisans": "CC BY 3.0",
+        "aciklama": "Çaltılar yerleşimi, 3 Temmuz 2009",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Çaltıözü",
+      "foto": null
+    },
+    {
+      "mahalle": "Çamurköy",
+      "foto": null
+    },
+    {
+      "mahalle": "Çatak",
+      "foto": null
+    },
+    {
+      "mahalle": "Çayan",
+      "foto": null
+    },
+    {
+      "mahalle": "Çaykenarı",
+      "foto": null
+    },
+    {
+      "mahalle": "Çobanisa",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/COBANSA%2CDAN_%C3%87ALTILAR%2CA_G%C4%B0DEN_YOL_-_panoramio.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:COBANSA%2CDAN_%C3%87ALTILAR%2CA_G%C4%B0DEN_YOL_-_panoramio.jpg",
+        "yazar": "veli gümüş",
+        "lisans": "CC BY 3.0",
+        "aciklama": "Çobanisa–Çaltılar yolu, 6 Temmuz 2009",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Çobanlar",
+      "foto": null
+    },
+    {
+      "mahalle": "Çökek",
+      "foto": null
+    },
+    {
+      "mahalle": "Çukurincir",
+      "foto": null
+    },
+    {
+      "mahalle": "Demirler",
+      "foto": null
+    },
+    {
+      "mahalle": "Dere",
+      "foto": null
+    },
+    {
+      "mahalle": "Dodurga",
+      "foto": null
+    },
+    {
+      "mahalle": "Doğanlar",
+      "foto": null
+    },
+    {
+      "mahalle": "Dont",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dont_mahallesi_1_Ocak_2017.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:Dont_mahallesi_1_Ocak_2017.jpg",
+        "yazar": "Teacher0691",
+        "lisans": "CC BY-SA 3.0",
+        "aciklama": "Dont Mahallesi, 1 Ocak 2017",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Döğer",
+      "foto": null
+    },
+    {
+      "mahalle": "Eşen",
+      "foto": null
+    },
+    {
+      "mahalle": "Gerişburnu",
+      "foto": null
+    },
+    {
+      "mahalle": "Girmeler",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Girmeler.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:Girmeler.jpg",
+        "yazar": "Vano111ru",
+        "lisans": "CC BY-SA 4.0",
+        "aciklama": "Girmeler köyü, 20 Ekim 2024",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Gölbent",
+      "foto": null
+    },
+    {
+      "mahalle": "Güneşli",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/G%C3%BCne%C5%9Fli.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:G%C3%BCne%C5%9Fli.jpg",
+        "yazar": "Vano111ru",
+        "lisans": "CC BY-SA 4.0",
+        "aciklama": "Güneşli köyü, 20 Ekim 2024",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Hacıosmanlar",
+      "foto": null
+    },
+    {
+      "mahalle": "İzzettin",
+      "foto": null
+    },
+    {
+      "mahalle": "Kabaağaç",
+      "foto": null
+    },
+    {
+      "mahalle": "Kadıköy",
+      "foto": null
+    },
+    {
+      "mahalle": "Karadere",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/48363_Karadere-Fethiye-Mu%C4%9Fla%2C_Turkey_-_panoramio.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:48363_Karadere-Fethiye-Mu%C4%9Fla%2C_Turkey_-_panoramio.jpg",
+        "yazar": "Andrzej Szkopiński",
+        "lisans": "CC BY 3.0",
+        "aciklama": "Karadere, 19 Haziran 2011",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Karaköy",
+      "foto": null
+    },
+    {
+      "mahalle": "Kayabaşı",
+      "foto": null
+    },
+    {
+      "mahalle": "Kayacık",
+      "foto": null
+    },
+    {
+      "mahalle": "Kayadibi",
+      "foto": null
+    },
+    {
+      "mahalle": "Kıncılar",
+      "foto": null
+    },
+    {
+      "mahalle": "Kınık",
+      "foto": null
+    },
+    {
+      "mahalle": "Korubükü",
+      "foto": null
+    },
+    {
+      "mahalle": "Kumluova",
+      "foto": null
+    },
+    {
+      "mahalle": "Menekşe",
+      "foto": null
+    },
+    {
+      "mahalle": "Minare",
+      "foto": null
+    },
+    {
+      "mahalle": "Ortaköy",
+      "foto": null
+    },
+    {
+      "mahalle": "Ören",
+      "foto": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Im_%C3%96ren_Canyon.jpg",
+        "kaynak_url": "https://commons.wikimedia.org/wiki/File:Im_%C3%96ren_Canyon.jpg",
+        "yazar": "Christian1311",
+        "lisans": "CC BY-SA 4.0",
+        "aciklama": "Ören Kanyonu, Eşen Çayı (mahallenin yakın çevresi), 17 Ağustos 2022",
+        "dogrulandi": "2026-11-10",
+        "yerel_dosya": false
+      }
+    },
+    {
+      "mahalle": "Paşalı",
+      "foto": null
+    },
+    {
+      "mahalle": "Sahil Ceylan",
+      "foto": null
+    },
+    {
+      "mahalle": "Sarıyer",
+      "foto": null
+    },
+    {
+      "mahalle": "Seki",
+      "foto": null
+    },
+    {
+      "mahalle": "Seydiler",
+      "foto": null
+    },
+    {
+      "mahalle": "Söğütlüdere",
+      "foto": null
+    },
+    {
+      "mahalle": "Temel",
+      "foto": null
+    },
+    {
+      "mahalle": "Uğurlu",
+      "foto": null
+    },
+    {
+      "mahalle": "Yaka",
+      "foto": null
+    },
+    {
+      "mahalle": "Yakabağ",
+      "foto": null
+    },
+    {
+      "mahalle": "Yayla Eldirek",
+      "foto": null
+    },
+    {
+      "mahalle": "Yayla Karaçulha",
+      "foto": null
+    },
+    {
+      "mahalle": "Yayla Patlangıç",
+      "foto": null
+    },
+    {
+      "mahalle": "Zorlar",
+      "foto": null
+    },
+    {
+      "mahalle": "Yayla Gökben",
+      "foto": null
+    }
+  ]
+}

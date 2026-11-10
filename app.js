@@ -1,6 +1,6 @@
 /* Mahalle Platformu — statik PWA + isteğe bağlı Supabase altyapısı */
 (()=>{'use strict';
-const BUILD_LABEL='10.11.2026 · V6 (Mahalle/ilçe düzeltmesi)';
+const BUILD_LABEL='10.11.2026 · V7 (Seydikemer fotoğrafları)';
 const CFG=window.MAHALLE_CONFIG||{};
 const LIVE=Boolean(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY&&window.supabase);
 const db=LIVE?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
@@ -108,6 +108,39 @@ async function loadGithubMuhtarlar(){
  });
  return githubMuhtarLoadPromise;
 }
+
+// V7: Seydikemer mahalle fotoğrafları GitHub'daki tek JSON dosyasından okunur.
+// Yanlış mahalleye görüntü atamamak için eşleştirme yalnızca il + ilçe + mahalle ile yapılır.
+const OFFICIAL_PHOTO_VERSION='20261110-v7';
+const githubPhotoMap=new Map();
+let githubPhotoStatus='bekleniyor';
+let githubPhotoLoadPromise=null;
+async function loadGithubMahalleFotograflari(){
+ if(githubPhotoLoadPromise)return githubPhotoLoadPromise;
+ githubPhotoStatus='yükleniyor';
+ githubPhotoLoadPromise=(async()=>{
+  const response=await fetch('./seydikemer-fotograflar.json?v='+OFFICIAL_PHOTO_VERSION,{cache:'no-store'});
+  if(!response.ok)throw new Error('Fotoğraf listesi HTTP '+response.status);
+  const doc=await response.json();
+  if(doc.il!=='Muğla'||doc.ilce!=='Seydikemer'||!Array.isArray(doc.mahalleler)||doc.mahalleler.length!==65)throw new Error('65 mahalle listesi bulunamadı');
+  const unique=new Set();githubPhotoMap.clear();
+  for(const rec of doc.mahalleler){
+   if(!rec.mahalle)continue;
+   const key=muhtarKey('Muğla','Seydikemer',rec.mahalle);
+   if(unique.has(key))throw new Error('Tekrarlanan mahalle: '+rec.mahalle);
+   unique.add(key);
+   if(!rec.foto)continue;
+   // Sadece kaynak ve lisans bilgisi bulunan HTTPS görselleri kabul edilir.
+   const f=rec.foto;
+   if(typeof f.url==='string'&&f.url.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')&&f.kaynak_url?.startsWith('https://commons.wikimedia.org/wiki/File:')&&f.yazar&&f.lisans){
+    githubPhotoMap.set(key,f);
+   }
+  }
+  githubPhotoStatus='hazır';return true;
+ })().catch(err=>{console.warn('Mahalle fotoğrafları yüklenemedi:',err);githubPhotoStatus='hata';githubPhotoLoadPromise=null;return false});
+ return githubPhotoLoadPromise;
+}
+function mahalleResmi(loc){return githubPhotoMap.get(muhtarKey(loc.province,loc.district,loc.neighborhood))||null}
 
 const automaticPopulationCache=new Map();
 const automaticDistrictCache=new Map();
@@ -227,7 +260,7 @@ const events=currentPosts('event').filter(p=>eventIncludesDay(p,state.calendarSe
 return `<div class="calendar-controls"><button aria-label="Önceki ay" data-month="-1">${icon('left','sm')}</button><span class="calendar-month">${esc(new Intl.DateTimeFormat('tr-TR',{month:'long',year:'numeric'}).format(month))}</span><button aria-label="Sonraki ay" data-month="1">${icon('chevron','sm')}</button></div><div class="calendar-week">${['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'].map(s=>`<div>${s}</div>`).join('')}</div><div class="calendar-days">${cells}</div><div class="calendar-selected">${esc(fmt(state.calendarSelected))}: ${events.length?`${events.length} etkinlik — ${esc(events.map(e=>e.category).join(', '))}`:'Kayıtlı etkinlik yok'}</div>`}
 function photosHome(){const images=currentPosts('photo').filter(p=>p.image_url).slice(0,3);return images.length?`<div class="photo-grid">${images.map(p=>`<img loading="lazy" data-post="${attr(p.id)}" src="${attr(p.image_url)}" alt="${attr(p.title)}">`).join('')}</div>`:empty('Mahallenizin ilk fotoğrafını siz paylaşın.')}
 function home(){const e=currentPosts('event'),f=currentPosts('funeral'),a=currentPosts('announcement'),l=currentPosts('listing'),i=currentPosts('issue'),g=state.location;
-return `<div class="layout-grid"><div class="primary-col"><section class="hero"><div class="hero-photo"></div><div class="hero-content"><span class="eyebrow">Mahallenizle bağlantıda kalın</span><h1>${esc(g.neighborhood)} ${esc(/(mahallesi|köyü)$/i.test(g.neighborhood)?'':'Mahallesi')}</h1><p>${esc(g.district)} / ${esc(g.province)}</p><button class="hero-change" data-location-open="1">${icon('pin','sm')} Başka mahalle seç ${icon('down','sm')}</button></div></section>
+return `<div class="layout-grid"><div class="primary-col"><section class="hero"><div class="hero-photo" ${mahalleResmi(g)?`style="background-image:url('${attr(mahalleResmi(g).url)}')"`:``}></div><div class="hero-content"><span class="eyebrow">Mahallenizle bağlantıda kalın</span><h1>${esc(g.neighborhood)} ${esc(/(mahallesi|köyü)$/i.test(g.neighborhood)?'':'Mahallesi')}</h1><p>${esc(g.district)} / ${esc(g.province)}</p><button class="hero-change" data-location-open="1">${icon('pin','sm')} Başka mahalle seç ${icon('down','sm')}</button></div></section>
 <div class="quick-grid">${actions.map(([key,label,sub,ico,color])=>`<button class="quick ${color}" ${key==='neighborhood'?`data-nav="neighborhood"`:`data-create="${key}"`}>${icon(ico,'lg')}<strong>${esc(label)}</strong><span>${esc(sub)}</span></button>`).join('')}</div>
 <div class="section-columns">${panel('Yaklaşan Etkinlikler','calendar',recent(e.filter(p=>!p.event_at||eventEnd(p)>=nl()),4),'events')}${panel('Son Cenaze Duyuruları','flower',recent(f,3)||empty('Henüz cenaze duyurusu yok.'),'funerals',f.length?'<div class="notice-box">Kullanıcı duyurularını paylaşmadan önce mutlaka teyit edin.</div>':'')}</div>
 <div class="section-columns">${panel('Mahalleden Fotoğraflar','image',photosHome(),'photos')}${panel('Son Sorun Bildirimleri','alert',recent(i,3),'issues')}</div></div>
@@ -244,12 +277,14 @@ function neighborhoodPage(){
  const l=state.location,p=visibleNeighborhoodProfile(l),photos=currentPosts('photo').filter(x=>x.image_url);
  const pop=p.population!=null?Number(p.population).toLocaleString('tr-TR'):'Veri bulunamadı';
  // Sistem kapağı yoksa ilgili mahalleye kullanıcılar tarafından yüklenen fotoğrafı kullan.
- const coverUrl=p.cover_url||photos[0]?.image_url||null;
- const cover=coverUrl?`<div class="np-cover-wrap"><img class="np-cover" src="${attr(coverUrl)}" alt="${attr(l.neighborhood)} için paylaşılan fotoğraf" loading="lazy">${!p.cover_url?'<span class="np-photo-credit">Topluluk fotoğrafı</span>':''}</div>`:`<div class="np-cover np-cover-empty">${icon('house','xl')}<span>Bu mahalleye henüz fotoğraf eklenmedi</span></div>`;
+ const official=mahalleResmi(l);
+ const coverUrl=p.cover_url||official?.url||photos[0]?.image_url||null;
+ const officialCredit=official&&!p.cover_url?`<span class="np-photo-credit">Fotoğraf: <a href="${attr(official.kaynak_url)}" target="_blank" rel="noopener noreferrer" style="color:white;text-decoration:underline">${esc(official.yazar)}</a> · ${esc(official.lisans)}</span>`:'';
+ const cover=coverUrl?`<div class="np-cover-wrap"><img class="np-cover" src="${attr(coverUrl)}" alt="${attr(l.neighborhood)} bölgesinden gerçek fotoğraf" loading="lazy">${officialCredit||(!p.cover_url?'<span class="np-photo-credit">Topluluk fotoğrafı</span>':'')}</div>`:`<div class="np-cover np-cover-empty">${icon('house','xl')}<span>Bu mahalleye ait doğrulanmış fotoğraf henüz bulunamadı</span></div>`;
  const popFoot=p.population!=null?`<p class="muted small">Kaynak: ${esc(p.population_source||'Sistem verisi')} · ${esc(p.population_year||'Yıl belirtilmedi')}${p.population_provenance==='unofficial'?' · Bağımsız veri, resmî doğrulama değildir':''}</p>`:state.populationLoadError?'<p class="muted small">Nüfus kaynağına şu an ulaşılamadı. <button type="button" class="btn" data-pop-retry="1">Tekrar Sorgula</button></p>':'<p class="muted small">Mahalleye özel nüfus verisi bulunamadı. Yanlış bir sayı gösterilmez.</p>';
  const muhtarName=p.muhtar_name||'Resmî muhtar bilgisi henüz bulunamadı';
  const sourceLink=p.muhtar_source_url?`<a href="${attr(p.muhtar_source_url)}" target="_blank" rel="noopener noreferrer">Resmî kaynak</a>`:'';
- return `<section class="panel full-panel np-profile">${cover}<div class="profile-card">${icon('house','xl')}<div><h3>${esc(l.neighborhood)}</h3><p>${esc(l.district)} / ${esc(l.province)}</p></div></div>
+ return `<section class="panel full-panel np-profile">${cover}${official&&!p.cover_url?`<p class="muted small">Gerçek yer fotoğrafı: ${esc(official.aciklama||l.neighborhood)} · Kaynak: Wikimedia Commons · ${esc(official.lisans)}</p>`:``}<div class="profile-card">${icon('house','xl')}<div><h3>${esc(l.neighborhood)}</h3><p>${esc(l.district)} / ${esc(l.province)}</p></div></div>
  <div class="stat-list"><span class="stat-chip">${icon('users','sm')} Nüfus: ${esc(pop)}${p.population_year?' ('+esc(p.population_year)+')':''}</span><span class="stat-chip">${icon('calendar','sm')} ${currentPosts('event').length} etkinlik</span><span class="stat-chip">${icon('image','sm')} ${photos.length} fotoğraf</span></div>${popFoot}
  <h3>Mahalle Muhtarı</h3><div class="np-muhtar"><strong>${esc(muhtarName)}</strong>${p.muhtar_phone?`<a class="btn" href="tel:${attr(p.muhtar_phone.replace(/[^+0-9]/g,''))}">${icon('phone','sm')} ${esc(p.muhtar_phone)}</a>`:'<span class="muted small">Yayımlanmış muhtarlık telefonu bulunamadı.</span>'}${p.muhtar_source?`<small class="muted">Kaynak: ${esc(p.muhtar_source)} ${sourceLink}</small>`:''}${p.muhtar_verified_at?`<small class="muted">Kaynak kontrol tarihi: ${esc(String(p.muhtar_verified_at).slice(0,10))}</small>`:''}${!p.muhtar_name?`<small class="muted">${githubMuhtarStatus==='hata'?'GitHub muhtarlar.json dosyası okunamadı. Dosya konumunu kontrol edin.':githubMuhtarStatus==='yükleniyor'?'Muhtar bilgileri yükleniyor…':'Bu mahalle için doğrulanmış muhtar kaydı henüz yok.'}</small>`:''}</div>
  <h3>Mahalle Hakkında</h3><p>${esc(p.description)}</p>${p.automatic_intro?'<div class="np-tag">İl / ilçe / mahalle kaydından otomatik oluşturulan temel tanıtım</div>':''}${p.history?`<h3>Tarihçe</h3><p>${esc(p.history)}</p>`:''}${p.landmarks?`<h3>Önemli Yerler</h3><p>${esc(p.landmarks)}</p>`:''}
@@ -264,6 +299,7 @@ async function loadNeighborhoodProfile(){
  if(state.view==='neighborhood')render();
  const tasks=[];
  tasks.push((async()=>{await loadGithubMuhtarlar();if(key===community()&&state.view==='neighborhood')render()})());
+ tasks.push((async()=>{await loadGithubMahalleFotograflari();if(key===community()&&state.view==='neighborhood')render()})());
  if(LIVE){tasks.push((async()=>{try{
  const {data,error}=await db.from('neighborhood_profiles').select('community_key,description,history,landmarks,population,population_year,population_source,cover_url,muhtar_name,muhtar_phone,muhtar_source,muhtar_verified_at').eq('community_key',key).maybeSingle();
  if(error)throw error;if(key===community()){state.neighborhoodProfile=data;if(state.view==='neighborhood')render()}
@@ -279,7 +315,7 @@ function content(){if(state.view==='home')return home();let [t,sub]=pageTitle();
 function render(){app.innerHTML=shell(content());if(state.modal)showModal(state.modal);}
 function modal(title,body){return `<div class="overlay" id="modalLayer"><div class="modal" role="dialog" aria-modal="true" aria-label="${attr(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="modal-close" data-close="1" aria-label="Kapat">${icon('close')}</button></div><div class="modal-scroll">${body}</div></div></div>`}
 function fld(label,name,placeholder='',type='text',value='',required=false){return `<div class="field"><label for="fld-${attr(name)}">${esc(label)}${required?' *':''}</label><input id="fld-${attr(name)}" name="${attr(name)}" type="${type}" value="${attr(value)}" placeholder="${attr(placeholder)}" ${required?'required':''} ${type==='number'?'min="0" step="any"':''}></div>`}
-function selectField(label,name,vals,current){return `<div class="field"><label for="fld-${attr(name)}">${esc(label)}</label><select id="fld-${attr(name)}" name="${attr(name)}">${vals.map(v=>`<option value="${attr(v)}" ${v===current?'selected':''}>${esc(v)}</option>`).join('')}</select></div>`}
+function selectField(label,name,vals,current){return `<div class="field"><label for="fld-${attr(name)}">${esc(label)}</label><select id="fld-${attr(name)}" name="${attr(name)}">${[...new Map(vals.map(v=>[locationSlug(v),v])).values()].map(v=>`<option value="${attr(v)}" ${locationSlug(v)===locationSlug(current)?'selected':''}>${esc(v)}</option>`).join('')}</select></div>`}
 function locationForm(){const p=state.location.province, d=state.location.district,n=state.location.neighborhood;return `<form id="locationForm" class="form-grid"><p class="muted small">Türkiye'deki il, ilçe, mahalle ve köyler arasında seçim yapabilirsiniz. Her mahalle tek sayfadır.</p>${!locFull?'<div class="info-alert">Tam yerleşim listesi henüz yüklenemedi. Sınırlı örnek liste gösteriliyor. İnternet bağlantınızı kontrol edin.</div>':''}${selectField('İl','province',Object.keys(locCache),p)}${selectField('İlçe','district',Object.keys(locCache[p]||{}),d)}${selectField('Mahalle / Köy','neighborhood',(locCache[p]||{})[d]||[],n)}<label class="inline-check"><input type="checkbox" name="autoFollow" checked> Bu mahalleyi takip et ve etkinliklerinden haberdar ol.</label><div class="form-actions"><button class="btn btn-primary" type="submit">${icon('pin','sm')} Mahalleye Git</button></div></form>`}
 function authForm(){const isReg=state.authTab==='register';return `<div class="auth-wrap"><div class="auth-logo"><span class="mark">${icon('house','xl')}</span><h2>Mahalle Platformu</h2><p>Mahallenizle her zaman bağlantıda kalın.</p></div><div class="auth-tabs"><button class="${!isReg?'active':''}" data-auth-tab="login">Giriş Yap</button><button class="${isReg?'active':''}" data-auth-tab="register">Kayıt Ol</button></div><form id="authForm" class="form-grid">${isReg?fld('Ad Soyad','name','Adınız ve soyadınız','text','',true):''}${fld('E-posta','email','ornek@eposta.com','email','',true)}${fld('Şifre','password',isReg?'En az 8 karakter':'Şifreniz','password','',true)}${isReg?`<label class="inline-check"><input type="checkbox" name="terms" required> <span><button type="button" class="link-button" data-legal="terms">Üyelik Sözleşmesi</button>'ni okudum ve kabul ediyorum.</span></label><label class="inline-check"><input type="checkbox" name="privacyAck" required><span><button type="button" class="link-button" data-legal="privacy">KVKK Aydınlatma Metni</button>'ni okudum (açık rıza değildir).</span></label>`:''}<button class="btn btn-primary btn-block" type="submit" ${state.busy?'disabled':''}>${isReg?'Hesap Oluştur':'Giriş Yap'}</button></form>${!LIVE?`<div class="info-alert">Bu pakette Supabase bağlantısı henüz yapılmadı. Gerçek üyelik açılmaz.</div><button class="btn btn-block" data-demo-login="1">${icon('user','sm')} Demo Olarak Devam Et</button>`:''}</div>`}
 function chooser(){return `<p class="muted small">Ne paylaşmak istiyorsunuz? Mahalle seçiminize göre ilgili sayfada gösterilir.</p><div class="picker-grid">${actions.filter(a=>a[0]!=='neighborhood').map(([k,l,sub,ico])=>`<button class="picker-option" data-create="${k}">${icon(ico)}${esc(l)}</button>`).join('')}</div>`}
@@ -441,7 +477,7 @@ document.addEventListener('submit',async e=>{if(!['authForm','createForm','locat
 document.addEventListener('input',e=>{if(e.target.id==='globalSearch'){state.query=e.target.value;if(state.query.trim()&&state.view!=='search'){state.view='search';render();const inp=$('#globalSearch');inp?.focus();inp?.setSelectionRange(inp.value.length,inp.value.length)}else if(state.view==='search'){const contentEl=$('.main');if(contentEl)contentEl.innerHTML=content()}}if(e.target.closest('#createForm')&&(['date','end_date','time','category'].includes(e.target.name)||weddingStages.some(([k])=>e.target.name===k+'_date')))updateClashes()});
 document.addEventListener('change',async e=>{if(e.target.closest('#createForm')&&e.target.name==='category'){const w=$('#weddingFields');if(w){w.hidden=e.target.value!=='Düğün';updateClashes()}}if(e.target.closest('#createForm')&&e.target.name.endsWith('_date'))updateClashes();if(e.target.id==='fld-province')syncLocationSelect('province');else if(e.target.id==='fld-district')syncLocationSelect('district');else if(e.target.classList.contains('pref-checkbox')){const p=pref();p[Number(e.target.dataset.pref)]=e.target.checked;storeSet('mp-preferences',p);if(LIVE&&state.user){const fields=['notify_events','notify_funeral','notify_announcements','notify_listings'];await db.from('profiles').update({[fields[Number(e.target.dataset.pref)]]:e.target.checked}).eq('id',state.user.id)}}});
 async function startup(){try{if(LIVE){const {data:{session}}=await db.auth.getSession();state.user=session?.user?nameEmailUser(session.user):null;db.auth.onAuthStateChange((_event,session)=>{const old=state.user?.id;state.user=session?.user?nameEmailUser(session.user):null;if(old!==state.user?.id){setTimeout(async()=>{await reloadRemote();render()},10)}});await reloadRemote()}
-render();loadLocations().then(()=>{if(!state.modal)render()});const id=new URLSearchParams(location.search).get('post');if(id){const p=state.posts.find(x=>x.id===id);if(p)openModal({type:'detail',id})}
+render();loadGithubMahalleFotograflari().then(()=>{if(!state.modal)render()});loadLocations().then(()=>{if(!state.modal)render()});const id=new URLSearchParams(location.search).get('post');if(id){const p=state.posts.find(x=>x.id===id);if(p)openModal({type:'detail',id})}
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 if(LIVE){setInterval(async()=>{await reloadRemote();if(!state.modal)render()},120000)}
 }catch(e){console.error(e);app.innerHTML=`<section class="empty">Uygulama açılırken hata oluştu. Sayfayı yenileyin.</section>`}}
