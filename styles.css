@@ -17,3 +17,10 @@
 
 .np-muhtar{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--border,#e2e8f0);border-radius:14px;margin:10px 0 20px;background:var(--surface,#fff)}
 .np-muhtar a{text-decoration:none}
+
+/* Otomatik kaynaklı mahalle tanıtımı */
+.np-cover-wrap{position:relative;margin-bottom:16px}
+.np-cover-wrap .np-cover{margin-bottom:0}
+.np-photo-credit{position:absolute;bottom:10px;right:10px;border-radius:7px;padding:5px 9px;background:rgba(12,29,42,.8);color:#fff;font-size:11px;font-weight:700}
+.np-tag{display:inline-flex;margin:5px 0 10px;background:#eef7f0;border:1px solid #cce8d4;color:#306a45;border-radius:9px;font-size:11px;padding:7px 10px}
+.np-muhtar small a{color:#157d40;text-decoration:underline}
