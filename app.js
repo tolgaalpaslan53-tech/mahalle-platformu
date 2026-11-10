@@ -1,6 +1,6 @@
 /* Mahalle Platformu — statik PWA + isteğe bağlı Supabase altyapısı */
 (()=>{'use strict';
-const BUILD_LABEL='10.11.2026 · V5 (GitHub muhtar)';
+const BUILD_LABEL='10.11.2026 · V6 (Mahalle/ilçe düzeltmesi)';
 const CFG=window.MAHALLE_CONFIG||{};
 const LIVE=Boolean(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY&&window.supabase);
 const db=LIVE?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
@@ -50,9 +50,14 @@ function weddingDetailHtml(p){
 
 // Kaynağı belirli, kamuya açık MUHTARLIK iletişim kayıtları. Bu liste bütün Türkiye'yi kapsamaz.
 // Muğla BB Yatağan kaynak kontrol: 2026-11-10; sonraki kontrollerde güncellenmelidir.
-const locationSlug=s=>String(s||'').normalize('NFKC').toLocaleLowerCase('tr-TR').replace(/\s+(mahallesi|mah\.?|köyü|köy)$/i,'').trim();
+// Türkçe yazım/boşluk ve mahalle/ilçe son eklerini eşleştir; orijinal görünen adı değiştirme.
+const locationSlug=s=>String(s||'').normalize('NFKC')
+ .replace(/[\u200B-\u200D\uFEFF]/g,'').trim().toLocaleLowerCase('tr-TR')
+ .replace(/\s+(mahallesi|mah\.?|köyü|köy|ilçesi|ilçe)\.?$/i,'')
+ .replace(/\s+/g,' ').trim();
+const muhtarKey=(p,d,n)=>[p,d,n].map(locationSlug).join('|');
 const officialMuhtarEntries = [{"neighborhood":"Akgedik","name":"Aysel AVCI","phone":"0538 322 4715"},{"neighborhood":"Akyol","name":"İsmail TOPAL","phone":"0542 431 1440"},{"neighborhood":"Atatürk","name":"Mehmet KÜÇÜK","phone":"0543 978 3450"},{"neighborhood":"Alaşar","name":"İskender TAŞ","phone":"0536 470 1832"},{"neighborhood":"Bağyaka","name":"Hüseyin ŞAHBAZ","phone":"0537 296 9990"},{"neighborhood":"Bahçeyaka","name":"Kamil KAPTAN","phone":"0532 544 3518"},{"neighborhood":"Bencik","name":"Dursel GÜREN","phone":"0545 420 5500"},{"neighborhood":"Bozarmut","name":"Ümit BOSTAN","phone":"0536 980 3514"},{"neighborhood":"Bozüyük","name":"Ahmet YANMADIK","phone":"0543 632 4588"},{"neighborhood":"Cazkırlar","name":"Mehmet DOKUNAN","phone":"0538 605 2076"},{"neighborhood":"Çakırlar","name":"Serkan OTURAK","phone":"0537 697 0629"},{"neighborhood":"Çamlıca","name":"Günal DİKEN","phone":"0537 527 4126"},{"neighborhood":"Cumhuriyet","name":"Mehmet ÖZBEK","phone":"0543 491 7283"},{"neighborhood":"Çukuröz","name":"İzzet BÜLBÜL","phone":"0534 847 8301"},{"neighborhood":"Dere","name":"Zafer ÇINAR","phone":"0505 619 1440"},{"neighborhood":"Deştin","name":"Nail KARAMAN","phone":"0535 513 6327"},{"neighborhood":"Doğanköy","name":"Durmuş GÖK","phone":"0536 203 3008"},{"neighborhood":"Elmacık","name":"Erkan GEREN","phone":"0537 203 7547"},{"neighborhood":"Esenköy","name":"Muhsin TATAR","phone":"0537 882 5311"},{"neighborhood":"Eskihisar","name":"Cafer ATEŞ","phone":"0537 860 1991"},{"neighborhood":"Gökgedik","name":"Erdoğan KOCABIYIK","phone":"0537 719 8510"},{"neighborhood":"Gökpınar","name":"Kudret UÇAR","phone":"0537 719 8513"},{"neighborhood":"Hacıbayramlar","name":"İlhan GENEK","phone":"0545 457 3885"},{"neighborhood":"Hacıveliler","name":"Ender ÇELİK","phone":"0542 527 4995"},{"neighborhood":"Hisarardı","name":"İbrahim TURAL","phone":"0542 693 1918"},{"neighborhood":"Kadıköy","name":"Ertan UYSAL","phone":"0536 414 0502"},{"neighborhood":"Kafacakaplancık","name":"Adem KAHRAMAN","phone":"0535 224 0946"},{"neighborhood":"Kapubağ","name":"Nedim YÖRÜK","phone":"0532 541 3915"},{"neighborhood":"Katrancı","name":"Mehmet ÖZTEMİZ","phone":"0542 205 0607"},{"neighborhood":"Kavak","name":"İsmail KÜÇÜK","phone":"0532 132 7355"},{"neighborhood":"Kırıkköy","name":"Saim SOLMAZ","phone":"0537 852 1376"},{"neighborhood":"Konak","name":"Gülgün ARSLAN","phone":"0554 949 2813"},{"neighborhood":"Kozağaç","name":"Taner KURT","phone":"0538 464 1192"},{"neighborhood":"Köklük","name":"Beytullah KÖKLÜ","phone":"0533 662 5941"},{"neighborhood":"Madenler","name":"Necati ALAN","phone":"0542 625 7427"},{"neighborhood":"Mesken","name":"Şenol ÖZDEMİR","phone":"0534 611 3929"},{"neighborhood":"Nebiköy","name":"Murat Ali KARATAŞ","phone":"0536 469 9411"},{"neighborhood":"Şahinler","name":"İsmet GÖKTAŞ","phone":"0532 223 9178"},{"neighborhood":"Şeref","name":"Hakan KİBAR","phone":"0536 211 6112"},{"neighborhood":"Turgut","name":"Selim BAHÇELİ","phone":"0535 387 5139"},{"neighborhood":"Turgutlar","name":"Mehmet AKKAYA","phone":"0535 071 6827"},{"neighborhood":"Yava","name":"Şenol ERSOY","phone":"0532 692 4190"},{"neighborhood":"Yayla","name":"Mustafa Kemal YATAK","phone":"0544 770 64 13"},{"neighborhood":"Yeni","name":"Sezai TİLKİOĞLU","phone":"0535 868 0823"},{"neighborhood":"Yenikarakuyu","name":"Yücel BAHÇE","phone":"0537 659 5215"},{"neighborhood":"Yeniköy","name":"Fidan GÖRELİ","phone":"0535 290 5476"},{"neighborhood":"Yeşilbağcılar","name":"Kahraman KARAOĞLAN","phone":"0538 274 0511"},{"neighborhood":"Yeşilköy","name":"Remzi ÇAY","phone":"0542 592 1617"},{"neighborhood":"Yukarıyayla","name":"Ferdi DEVECİ","phone":"0543 416 7497"},{"neighborhood":"Zeytinköy","name":"Yalçın BİLGİN","phone":"0537 360 0496"}];
-const officialMuhtarMap = new Map(officialMuhtarEntries.map(x=>[nKey('Muğla','Yatağan',locationSlug(x.neighborhood)),{
+const officialMuhtarMap = new Map(officialMuhtarEntries.map(x=>[muhtarKey('Muğla','Yatağan',x.neighborhood),{
  muhtar_name:x.name,muhtar_phone:x.phone,muhtar_source:'Muğla Büyükşehir Belediyesi / Yatağan muhtar listesi',
  muhtar_source_url:'https://mugla.bel.tr/sayfa/yatagan3',muhtar_verified_at:'2026-11-10'
 }]));
@@ -62,13 +67,13 @@ const officialSeydikemerEntries = [{"neighborhood":"Alaçat","name":"Zekeriya KO
 for(const x of officialSeydikemerEntries){
  const item={muhtar_name:x.name,muhtar_phone:x.phone,muhtar_source:x.source,
   muhtar_source_url:x.url,muhtar_verified_at:'2026-11-10'};
- officialMuhtarMap.set(nKey('Muğla','Seydikemer',locationSlug(x.neighborhood)),item);
+ officialMuhtarMap.set(muhtarKey('Muğla','Seydikemer',x.neighborhood),item);
  // Büyükşehir Belediyesi listesinde Ceylan mahallesi Yayla Ceylan adıyla geçebiliyor.
- if(x.neighborhood==='Ceylan')officialMuhtarMap.set(nKey('Muğla','Seydikemer','yayla ceylan'),item);
+ if(x.neighborhood==='Ceylan')officialMuhtarMap.set(muhtarKey('Muğla','Seydikemer','yayla ceylan'),item);
 }
 // V5: Muhtar verisi GitHub Pages'teki ayrı muhtarlar.json dosyasından yüklenir.
 // Yeni muhtar eklemek için sadece JSON dosyasını düzenlemek yeterlidir.
-const MUHTAR_DATA_VERSION='20261110-v5';
+const MUHTAR_DATA_VERSION='20261110-v6';
 const githubMuhtarMap=new Map();
 let githubMuhtarStatus='bekleniyor';
 let githubMuhtarRecordCount=0;
@@ -85,10 +90,10 @@ async function loadGithubMuhtarlar(){
   for(const rec of payload.kayitlar){
    if(!rec.il||!rec.ilce||!rec.mahalle||!rec.muhtar)continue;
    const obj={muhtar_name:rec.muhtar,muhtar_phone:rec.telefon||null,muhtar_source:rec.kaynak||'Resmî belediye listesi',muhtar_source_url:rec.kaynak_url||null,muhtar_verified_at:rec.kaynak_kontrol||null};
-   githubMuhtarMap.set(nKey(rec.il,rec.ilce,locationSlug(rec.mahalle)),obj);
+   githubMuhtarMap.set(muhtarKey(rec.il,rec.ilce,rec.mahalle),obj);
    // Seydikemer'de Ceylan, bazı kaynaklarda Yayla Ceylan adıyla yer alıyor.
    if(locationSlug(rec.ilce)==='seydikemer'&&locationSlug(rec.mahalle)==='ceylan'){
-    githubMuhtarMap.set(nKey(rec.il,rec.ilce,'yayla ceylan'),obj);
+    githubMuhtarMap.set(muhtarKey(rec.il,rec.ilce,'yayla ceylan'),obj);
    }
   }
   if(githubMuhtarMap.size<100)throw new Error('Mahalle eşleştirmesi eksik');
@@ -149,7 +154,7 @@ async function fetchAutoPopulation(loc){
 }
 const visibleNeighborhoodProfile=(loc)=>{
  const main=state.neighborhoodProfile||{};
- const imported=githubMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||githubMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||officialMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||officialMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||{};
+ const imported=githubMuhtarMap.get(muhtarKey(loc.province,loc.district,loc.neighborhood))||officialMuhtarMap.get(muhtarKey(loc.province,loc.district,loc.neighborhood))||{};
  const extra=state.autoNeighborhoodPopulation||{};
  return {...imported,...extra,...main,
  description:main.description||autoIntroduction(loc),
@@ -182,7 +187,16 @@ const starter=()=>[
  {id:'sample-l1',kind:'listing',category:'Satılık',title:'Örnek tarım ekipmanı ilanı',description:'Bu bir demo ilanıdır, gerçek satış değildir.',price:12500,...baseLocation,community_key:nKey('Muğla','Yatağan','Gökgedik'),created_at:new Date().toISOString(),author_name:'Demo içerik'},
  {id:'sample-i1',kind:'issue',category:'Yol',title:'Örnek yol bakım bildirimi',description:'Bir mahalle sorununun burada nasıl göründüğünü gösterir.',status:'published',...baseLocation,community_key:nKey('Muğla','Yatağan','Gökgedik'),created_at:new Date().toISOString(),author_name:'Demo içerik'}
  ];
-let locCache=fallback,locFull=false;
+function seedOfficialDistricts(source){
+ const copy={...source,'Muğla':{...(source['Muğla']||{})}};
+ for(const [district,entries] of [['Yatağan',officialMuhtarEntries],['Seydikemer',officialSeydikemerEntries]]){
+  // 50/65 resmî mahalle; tekrar eden adları tekilleştir.
+  copy['Muğla'][district]=[...new Map(entries.map(e=>[locationSlug(e.neighborhood),e.neighborhood])).values()]
+   .sort((a,b)=>a.localeCompare(b,'tr'));
+ }
+ return copy;
+}
+let locCache=seedOfficialDistricts(fallback),locFull=false;
 const storeGet=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},storeSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
 let state={view:'home',location:storeGet('mp-location',baseLocation),following:storeGet('mp-follow',[nKey('Muğla','Yatağan','Gökgedik')]),posts:LIVE?[]:storeGet('mp-demo-posts',starter()),notifications:[],user:LIVE?null:storeGet('mp-demo-user',null),filter:'Tümü',query:'',calendarMonth:new Date(new Date().getFullYear(),new Date().getMonth(),1),calendarSelected:dateValue(new Date()),busy:false,modal:null,authTab:'login',pendingAction:null,afterAuth:null,remoteReady:false,neighborhoodProfile:null,autoNeighborhoodPopulation:null,populationLoadError:null,neighborhoodLoading:false};
 const community=()=>nKey(state.location.province,state.location.district,state.location.neighborhood);
@@ -346,22 +360,70 @@ function syncLocationSelect(which){const p=$('#fld-province'),d=$('#fld-district
 function jumpToKey(key){const [p,d,n]=key.split('|');for(const P of Object.keys(locCache)){if(P.toLocaleLowerCase('tr-TR')!==p)continue;for(const D of Object.keys(locCache[P])){if(D.toLocaleLowerCase('tr-TR')!==d)continue;const N=(locCache[P][D]||[]).find(v=>v.toLocaleLowerCase('tr-TR')===n);if(N)return setLocationAndFollow(P,D,N)}}toast('Mahalle listede bulunamadı; yeniden seçebilirsiniz.');openModal({type:'location'})}
 async function markNotification(id){if(LIVE&&state.user){await db.from('notifications').update({read_at:new Date().toISOString()}).eq('id',id).eq('user_id',state.user.id);await reloadRemote()}else{state.notifications=state.notifications.map(n=>n.id===id?{...n,read_at:new Date().toISOString()}:n)}render()}
 async function sharePost(id){const p=state.posts.find(x=>x.id===id);if(!p)return;const url=new URL(window.location.href);url.searchParams.set('post',id);const text=`${p.title} • ${p.neighborhood} / ${p.district}\n${url}`;try{if(navigator.share)await navigator.share({title:p.title,text,url:url.toString()});else{await navigator.clipboard.writeText(text);toast('Paylaşım bağlantısı kopyalandı.')}}catch(e){if(e.name!=='AbortError')toast('Bağlantı paylaşılamadı.')}}
-async function loadLocations(){try{const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),13000);const r=await fetch(CFG.LOCATION_DATA_URL||'',{signal:ctrl.signal});clearTimeout(timer);if(!r.ok)throw new Error('Yerleşim kaynağı erişilemedi');const obj=await r.json();if(!obj||Object.keys(obj).length<70)throw new Error('Yerleşim verisi eksik');const clean={};for(const [p,districts]of Object.entries(obj)){if(typeof districts!=='object'||Array.isArray(districts)||!districts)continue;clean[p]={};for(const [d,names]of Object.entries(districts)){if(!Array.isArray(names))continue;clean[p][d]=[...new Set(names.filter(x=>typeof x==='string'&&x.trim()))].sort((a,b)=>a.localeCompare(b,'tr'))}}// Seydikemer Belediyesi'nin 65 resmî yerleşim adı ülke geneli listede eksikse tamamlanır.
-const muglaName=Object.keys(clean).find(k=>locationSlug(k)==='muğla')||'Muğla';
-clean[muglaName] ||= {};
-const seydikemerDistrict=Object.keys(clean[muglaName]).find(k=>locationSlug(k)==='seydikemer')||'Seydikemer';
-const merged=clean[muglaName][seydikemerDistrict]||[];
-const exists=new Set(merged.map(locationSlug));
-for(const item of officialSeydikemerEntries){
- const n=locationSlug(item.neighborhood);
- if(!exists.has(n)){merged.push(item.neighborhood);exists.add(n)}
+// Ülke verisindeki il/ilçe varyantlarını birleştir. Muğla'nın iki ilçesinde
+// resmî 50 + 65 mahalle listesi tek doğru seçenek olarak kullanılır.
+function canonicalDistrict(province,district){
+ if(locationSlug(province)==='muğla'){
+  if(locationSlug(district)==='seydikemer')return 'Seydikemer';
+  if(locationSlug(district)==='yatağan')return 'Yatağan';
+ }
+ return String(district||'').trim();
 }
-clean[muglaName][seydikemerDistrict]=merged.sort((a,b)=>a.localeCompare(b,'tr'));
-locCache=clean;locFull=true;state.remoteReady=true;
-// Önceki listede bulunmayan eski örnek mahalle varsayılanını koru; seçim ekranına ekle.
-const {province:p,district:d,neighborhood:n}=state.location;if(!locCache[p]?.[d]?.includes(n)){const pp=Object.keys(locCache).find(x=>x.toLocaleLowerCase('tr-TR')===p.toLocaleLowerCase('tr-TR'));const dd=pp&&Object.keys(locCache[pp]).find(x=>x.toLocaleLowerCase('tr-TR')===d.toLocaleLowerCase('tr-TR'));const nn=dd&&locCache[pp][dd].find(x=>x.toLocaleLowerCase('tr-TR')===n.toLocaleLowerCase('tr-TR'));if(nn){state.location={province:pp,district:dd,neighborhood:nn};storeSet('mp-location',state.location)}}
-if(state.modal?.type==='location')showModal(state.modal);
-}catch(e){console.warn('Mahalle veri kaynağı:',e.message);locFull=false;}}
+function reconcileSelectedLocation(){
+ const old=state.location;
+ const province=Object.keys(locCache).find(k=>locationSlug(k)===locationSlug(old.province));
+ if(!province)return;
+ const district=Object.keys(locCache[province]).find(k=>locationSlug(k)===locationSlug(old.district));
+ if(!district)return;
+ const neighborhood=(locCache[province][district]||[]).find(k=>locationSlug(k)===locationSlug(old.neighborhood));
+ if(!neighborhood)return;
+ if(old.province!==province||old.district!==district||old.neighborhood!==neighborhood){
+  state.location={province,district,neighborhood};storeSet('mp-location',state.location);
+ }
+}
+async function loadLocations(){
+ try{
+  const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),13000);
+  let response;
+  try{response=await fetch(CFG.LOCATION_DATA_URL||'',{signal:ctrl.signal})}finally{clearTimeout(timer)}
+  if(!response.ok)throw new Error('Yerleşim kaynağı erişilemedi');
+  const obj=await response.json();
+  if(!obj||Object.keys(obj).length<70)throw new Error('Yerleşim verisi eksik');
+  const clean={};
+  for(const [rawProvince,districts] of Object.entries(obj)){
+   if(typeof districts!=='object'||Array.isArray(districts)||!districts)continue;
+   const province=locationSlug(rawProvince)==='muğla'?'Muğla':(Object.keys(clean).find(k=>locationSlug(k)===locationSlug(rawProvince))||String(rawProvince).trim());
+   clean[province] ||= {};
+   for(const [rawDistrict,names] of Object.entries(districts)){
+    if(!Array.isArray(names))continue;
+    const canonical=canonicalDistrict(province,rawDistrict);
+    // İlçe adı farklı harf/boşluk ile yazılmış olsa bile TEK seçenek olacak.
+    const district=Object.keys(clean[province]).find(k=>locationSlug(k)===locationSlug(canonical))||canonical;
+    const previous=clean[province][district]||[];
+    const all=new Map(previous.map(x=>[locationSlug(x),x]));
+    for(const name of names){
+     if(typeof name!=='string'||!name.trim())continue;
+     if(!all.has(locationSlug(name)))all.set(locationSlug(name),name.trim());
+    }
+    clean[province][district]=[...all.values()].sort((a,b)=>a.localeCompare(b,'tr'));
+   }
+  }
+  const fixed=seedOfficialDistricts(clean);
+  // Eğer kaynakta farklı Seydikemer/Yatağan anahtarları kaldıysa temizle.
+  for(const d of Object.keys(fixed['Muğla'])){
+   if((locationSlug(d)==='seydikemer'&&d!=='Seydikemer')||(locationSlug(d)==='yatağan'&&d!=='Yatağan'))delete fixed['Muğla'][d];
+  }
+  locCache=fixed;locFull=true;state.remoteReady=true;
+  reconcileSelectedLocation();
+  if(state.modal?.type==='location')showModal(state.modal);
+ }catch(e){
+  console.warn('Mahalle veri kaynağı:',e.message);
+  // Bağlantı yokken de Yatağan 50, Seydikemer 65 mahalle hazırdır.
+  locCache=seedOfficialDistricts(fallback);locFull=false;
+  reconcileSelectedLocation();
+  if(state.modal?.type==='location')showModal(state.modal);
+ }
+}
 let deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
 async function installApp(){if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else toast('iPhone: Safari > Paylaş > Ana Ekrana Ekle. Android/masaüstü: Tarayıcı menüsünden Uygulamayı Yükle.');}
