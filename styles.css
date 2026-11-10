@@ -11,3 +11,9 @@
 .link-button{background:none;border:0;color:#187f40;text-decoration:underline;padding:0;font-size:inherit;font-weight:750}
 /* Telefonlarda uzun içeriklerin flex kartları ekran dışına itmesini engelle. */
 @media(max-width:760px){.layout-grid,.primary-col,.secondary-col,.panel,.item-row{min-width:0;max-width:100%}.secondary-col>.panel,.primary-col>.panel,.section-columns>.panel{width:100%;max-width:100%}.item-row{width:100%}.item-main{flex:1 1 0;min-width:0}}
+
+/* Mahalle tanıtım sayfası */
+.np-cover{display:flex;width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:16px}.np-cover-empty{background:linear-gradient(125deg,#123a52,#267b62);color:white;align-items:center;justify-content:center;flex-direction:column;gap:10px;font-weight:700}.np-profile h3{margin-top:18px;margin-bottom:8px}.np-profile p{line-height:1.65;white-space:pre-line}.np-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.np-gallery button{border:0;padding:0;background:transparent;cursor:pointer;aspect-ratio:1;overflow:hidden;border-radius:10px}.np-gallery img{width:100%;height:100%;object-fit:cover}@media(max-width:600px){.np-cover{height:165px}.np-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.np-muhtar{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--border,#e2e8f0);border-radius:14px;margin:10px 0 20px;background:var(--surface,#fff)}
+.np-muhtar a{text-decoration:none}
