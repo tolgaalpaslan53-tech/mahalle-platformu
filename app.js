@@ -1,5 +1,6 @@
 /* Mahalle Platformu — statik PWA + isteğe bağlı Supabase altyapısı */
 (()=>{'use strict';
+const BUILD_LABEL='10.11.2026 · V4';
 const CFG=window.MAHALLE_CONFIG||{};
 const LIVE=Boolean(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY&&window.supabase);
 const db=LIVE?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
@@ -105,12 +106,12 @@ async function fetchAutoPopulation(loc){
        break;
      }
    }
- }catch(e){console.warn('Otomatik nüfus doğrulanamadı:',e.message)}
+ }catch(e){console.warn('Otomatik nüfus doğrulanamadı:',e.message);throw e}
  automaticPopulationCache.set(k,result);return result;
 }
 const visibleNeighborhoodProfile=(loc)=>{
  const main=state.neighborhoodProfile||{};
- const imported=officialMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||{};
+ const imported=officialMuhtarMap.get(nKey(loc.province,loc.district,locationSlug(loc.neighborhood)))||officialMuhtarMap.get(nKey(loc.province,loc.district,loc.neighborhood))||{};
  const extra=state.autoNeighborhoodPopulation||{};
  return {...imported,...extra,...main,
  description:main.description||autoIntroduction(loc),
@@ -145,7 +146,7 @@ const starter=()=>[
  ];
 let locCache=fallback,locFull=false;
 const storeGet=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},storeSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
-let state={view:'home',location:storeGet('mp-location',baseLocation),following:storeGet('mp-follow',[nKey('Muğla','Yatağan','Gökgedik')]),posts:LIVE?[]:storeGet('mp-demo-posts',starter()),notifications:[],user:LIVE?null:storeGet('mp-demo-user',null),filter:'Tümü',query:'',calendarMonth:new Date(new Date().getFullYear(),new Date().getMonth(),1),calendarSelected:dateValue(new Date()),busy:false,modal:null,authTab:'login',pendingAction:null,afterAuth:null,remoteReady:false,neighborhoodProfile:null,autoNeighborhoodPopulation:null,neighborhoodLoading:false};
+let state={view:'home',location:storeGet('mp-location',baseLocation),following:storeGet('mp-follow',[nKey('Muğla','Yatağan','Gökgedik')]),posts:LIVE?[]:storeGet('mp-demo-posts',starter()),notifications:[],user:LIVE?null:storeGet('mp-demo-user',null),filter:'Tümü',query:'',calendarMonth:new Date(new Date().getFullYear(),new Date().getMonth(),1),calendarSelected:dateValue(new Date()),busy:false,modal:null,authTab:'login',pendingAction:null,afterAuth:null,remoteReady:false,neighborhoodProfile:null,autoNeighborhoodPopulation:null,populationLoadError:null,neighborhoodLoading:false};
 const community=()=>nKey(state.location.province,state.location.district,state.location.neighborhood);
 const currentPosts=(kind=null,allFollowed=false)=>state.posts.filter(p=>(!kind||p.kind===kind)&&(allFollowed?state.following.includes(p.community_key):p.community_key===community())&&p.status!=='removed').sort((a,b)=>(kind==='event'?String(a.event_at||'').localeCompare(String(b.event_at||'')):String(b.created_at||'').localeCompare(String(a.created_at||''))));
 const initials=(s)=>String(s||'MP').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toLocaleUpperCase('tr-TR');
@@ -193,20 +194,20 @@ function neighborhoodPage(){
  // Sistem kapağı yoksa ilgili mahalleye kullanıcılar tarafından yüklenen fotoğrafı kullan.
  const coverUrl=p.cover_url||photos[0]?.image_url||null;
  const cover=coverUrl?`<div class="np-cover-wrap"><img class="np-cover" src="${attr(coverUrl)}" alt="${attr(l.neighborhood)} için paylaşılan fotoğraf" loading="lazy">${!p.cover_url?'<span class="np-photo-credit">Topluluk fotoğrafı</span>':''}</div>`:`<div class="np-cover np-cover-empty">${icon('house','xl')}<span>Bu mahalleye henüz fotoğraf eklenmedi</span></div>`;
- const popFoot=p.population!=null?`<p class="muted small">Kaynak: ${esc(p.population_source||'Sistem verisi')} · ${esc(p.population_year||'Yıl belirtilmedi')}${p.population_provenance==='unofficial'?' · Bağımsız veri, resmî doğrulama değildir':''}</p>`:'<p class="muted small">Mahalleye özel nüfus verisi bulunamadı. Yanlış bir sayı gösterilmez.</p>';
+ const popFoot=p.population!=null?`<p class="muted small">Kaynak: ${esc(p.population_source||'Sistem verisi')} · ${esc(p.population_year||'Yıl belirtilmedi')}${p.population_provenance==='unofficial'?' · Bağımsız veri, resmî doğrulama değildir':''}</p>`:state.populationLoadError?'<p class="muted small">Nüfus kaynağına şu an ulaşılamadı. <button type="button" class="btn" data-pop-retry="1">Tekrar Sorgula</button></p>':'<p class="muted small">Mahalleye özel nüfus verisi bulunamadı. Yanlış bir sayı gösterilmez.</p>';
  const muhtarName=p.muhtar_name||'Resmî muhtar bilgisi henüz bulunamadı';
  const sourceLink=p.muhtar_source_url?`<a href="${attr(p.muhtar_source_url)}" target="_blank" rel="noopener noreferrer">Resmî kaynak</a>`:'';
  return `<section class="panel full-panel np-profile">${cover}<div class="profile-card">${icon('house','xl')}<div><h3>${esc(l.neighborhood)}</h3><p>${esc(l.district)} / ${esc(l.province)}</p></div></div>
  <div class="stat-list"><span class="stat-chip">${icon('users','sm')} Nüfus: ${esc(pop)}${p.population_year?' ('+esc(p.population_year)+')':''}</span><span class="stat-chip">${icon('calendar','sm')} ${currentPosts('event').length} etkinlik</span><span class="stat-chip">${icon('image','sm')} ${photos.length} fotoğraf</span></div>${popFoot}
  <h3>Mahalle Muhtarı</h3><div class="np-muhtar"><strong>${esc(muhtarName)}</strong>${p.muhtar_phone?`<a class="btn" href="tel:${attr(p.muhtar_phone.replace(/[^+0-9]/g,''))}">${icon('phone','sm')} ${esc(p.muhtar_phone)}</a>`:'<span class="muted small">Yayımlanmış muhtarlık telefonu bulunamadı.</span>'}${p.muhtar_source?`<small class="muted">Kaynak: ${esc(p.muhtar_source)} ${sourceLink}</small>`:''}${p.muhtar_verified_at?`<small class="muted">Kaynak kontrol tarihi: ${esc(String(p.muhtar_verified_at).slice(0,10))}</small>`:''}${!p.muhtar_name?'<small class="muted">Türkiye genelinde doğrulanmış tek bir açık muhtar listesi bulunmadığı için tahmini ad gösterilmez.</small>':''}</div>
  <h3>Mahalle Hakkında</h3><p>${esc(p.description)}</p>${p.automatic_intro?'<div class="np-tag">İl / ilçe / mahalle kaydından otomatik oluşturulan temel tanıtım</div>':''}${p.history?`<h3>Tarihçe</h3><p>${esc(p.history)}</p>`:''}${p.landmarks?`<h3>Önemli Yerler</h3><p>${esc(p.landmarks)}</p>`:''}
- <div class="notice-box">Tanıtım ve muhtar bilgileri kullanıcılar tarafından değiştirilemez. Fotoğraf galerisi mahalle kullanıcılarının paylaşımlarını içerir. Bilgilerin kaynak yılı ve doğrulama durumu ayrıca belirtilir.</div>
+ <div class="notice-box">Tanıtım ve muhtar bilgileri kullanıcılar tarafından değiştirilemez. Fotoğraf galerisi mahalle kullanıcılarının paylaşımlarını içerir. Bilgilerin kaynak yılı ve doğrulama durumu ayrıca belirtilir.</div><p class="muted small" style="margin:12px 0 2px">Uygulama sürümü: ${esc(BUILD_LABEL)}</p>
  <div class="form-actions"><button class="btn btn-primary" data-follow-toggle="${attr(community())}">${icon('bookmark','sm')} ${state.following.includes(community())?'Takipten Çık':'Bu Mahalleyi Takip Et'}</button><button class="btn" data-location-open="1">${icon('pin','sm')} Mahalle Değiştir</button></div></section>
  <section class="panel full-panel" style="margin-top:13px"><div class="panel-head"><h2>${icon('image')} Mahalle Fotoğrafları</h2><button data-nav="photos">Tümünü Gör ${icon('chevron','sm')}</button></div><div class="panel-body">${photos.length?`<div class="np-gallery">${photos.slice(0,12).map(x=>`<button type="button" data-post="${attr(x.id)}" aria-label="${attr(x.title)}"><img src="${attr(x.image_url)}" alt="${attr(x.title)}" loading="lazy"></button>`).join('')}</div>`:empty('Bu mahalleye henüz fotoğraf eklenmedi.')}<div class="form-actions"><button class="btn btn-primary" data-create="photo">${icon('plus','sm')} Mahalle Fotoğrafı Ekle</button></div></div></section>`;
 }
 async function loadNeighborhoodProfile(){
  const key=community(),loc={...state.location};
- state.neighborhoodProfile=null;state.autoNeighborhoodPopulation=automaticPopulationCache.get(key)||null;
+ state.neighborhoodProfile=null;state.autoNeighborhoodPopulation=automaticPopulationCache.get(key)||null;state.populationLoadError=null;
  state.neighborhoodLoading=true;
  if(state.view==='neighborhood')render();
  const tasks=[];
@@ -214,7 +215,7 @@ async function loadNeighborhoodProfile(){
  const {data,error}=await db.from('neighborhood_profiles').select('community_key,description,history,landmarks,population,population_year,population_source,cover_url,muhtar_name,muhtar_phone,muhtar_source,muhtar_verified_at').eq('community_key',key).maybeSingle();
  if(error)throw error;if(key===community()){state.neighborhoodProfile=data;if(state.view==='neighborhood')render()}
  }catch(e){console.warn('Mahalle tanıtımı yüklenemedi:',e.message)}})());}
- tasks.push((async()=>{const p=await fetchAutoPopulation(loc);if(key===community()){state.autoNeighborhoodPopulation=p;if(state.view==='neighborhood')render()}})());
+ tasks.push((async()=>{try{const p=await fetchAutoPopulation(loc);if(key===community()){state.autoNeighborhoodPopulation=p;if(state.view==='neighborhood')render()}}catch(e){if(key===community()){state.populationLoadError=String(e?.message||'Bağlantı hatası');if(state.view==='neighborhood')render()}}})());
  await Promise.allSettled(tasks);
  if(key===community())state.neighborhoodLoading=false;
 }
@@ -325,9 +326,9 @@ if(state.modal?.type==='location')showModal(state.modal);
 let deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
 async function installApp(){if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else toast('iPhone: Safari > Paylaş > Ana Ekrana Ekle. Android/masaüstü: Tarayıcı menüsünden Uygulamayı Yükle.');}
-document.addEventListener('click',async e=>{const t=e.target.closest('[data-nav],[data-create],[data-close],[data-auth],[data-auth-tab],[data-demo-login],[data-location-open],[data-filter],[data-day],[data-month],[data-post],[data-share],[data-edit],[data-delete],[data-report],[data-legal],[data-logout],[data-follow-jump],[data-follow-toggle],[data-install],[data-notif-permission],[data-read-all],[data-notification]');if(!t){if(e.target.id==='modalLayer')closeModal();return}const d=t.dataset;
+document.addEventListener('click',async e=>{const t=e.target.closest('[data-nav],[data-create],[data-close],[data-auth],[data-auth-tab],[data-demo-login],[data-location-open],[data-pop-retry],[data-filter],[data-day],[data-month],[data-post],[data-share],[data-edit],[data-delete],[data-report],[data-legal],[data-logout],[data-follow-jump],[data-follow-toggle],[data-install],[data-notif-permission],[data-read-all],[data-notification]');if(!t){if(e.target.id==='modalLayer')closeModal();return}const d=t.dataset;
 if(d.nav){closeModal();setView(d.nav)}else if(d.create)openCreate(d.create);else if(d.close){state.afterAuth=null;closeModal()}else if(d.auth){state.authTab=d.auth;openModal({type:'auth'})}else if(d.authTab){state.authTab=d.authTab;openModal({type:'auth'})}else if(d.demoLogin){state.user={id:'demo-member',name:'Demo Kullanıcı',email:''};saveLocal();closeModal();render();toast('Demo oturumu açıldı. Gerçek hesap değildir.');if(state.afterAuth){const a=state.afterAuth;state.afterAuth=null;a()}}
-else if(d.locationOpen)openModal({type:'location'});else if(d.filter){state.filter=d.filter;render()}
+else if(d.locationOpen)openModal({type:'location'});else if(d.popRetry){loadNeighborhoodProfile()}else if(d.filter){state.filter=d.filter;render()}
 else if(d.day){state.calendarSelected=d.day;render()}else if(d.month){state.calendarMonth=new Date(state.calendarMonth.getFullYear(),state.calendarMonth.getMonth()+Number(d.month),1);render()}
 else if(d.post){openModal({type:'detail',id:d.post})}else if(d.share)sharePost(d.share);else if(d.edit){const p=state.posts.find(x=>x.id===d.edit);if(p)openModal({type:'create',kind:p.kind,post:p})}else if(d.delete)deletePost(d.delete);else if(d.report){requestLogin(()=>openModal({type:'report',id:d.report}))}else if(d.legal)openModal({type:'legal',which:d.legal})
 else if(d.logout){if(LIVE)await db.auth.signOut();state.user=null;state.notifications=[];saveLocal();setView('home');toast('Çıkış yapıldı.')}
